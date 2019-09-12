@@ -1,6 +1,6 @@
-#include <math.h>
-#include <iostream>
-#include <string>
+#include <math.h> // for the pow function
+#include <iostream> // for the outputting of the final value
+#include <string> // for converting the final value to a string to output
 
 float pi_calc(int digits){
     float m1 = 1; // mass of block on left (smaller)
