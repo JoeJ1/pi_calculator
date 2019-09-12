@@ -5,16 +5,18 @@ def pi(digits):
     u1 = 0 # initial velocity of block on left
     u2 = -100 # initial velocity of block on right (moving to the left)
 
-    pi = 0 # counts each collision
-    while(u1<u2): # if velocity of u2 is greater, means it won't collide with u1 again so calculation should stop
-        pi=pi+1
-        if (pi % 2) == 0: # if even it is colliding with the wall (on left)
+    piCalculated = 0 # counts each collision
+    while(True):
+        piCalculated=piCalculated+1
+        if (u1<u2 and u1 < 0): #If the magnitude of u1 is smaller than u2 and it is negative (so going to the right) then it hits the wall
             u1 = -u1
-        else: # if odd, colliding with other block, this changes momentums
+        else: # otherwise, it changes momentum
             sm = (m1+m2)
-            v1 = ((m1-m2)/sm)*u1+((2*m2)/sm)*u2
-            v2 = ((m1-m2)/sm)*u2+((2*m2)/sm)*u1
+            v1 = ((m1-m2)/sm)*u1 + ((2*m2)/sm)*u2
+            v2 = ((2*m1)/sm)*u1 + ((m2-m1)/sm)*u2
             u1=v1
             u2=v2
 
-
+        if(u1<u2 and u1>0): # if velocity of u2 is greater (and positive), means it won't collide with u1 again so calculation should stop
+            break
+    return piCalculated
