@@ -7,9 +7,15 @@ float pi_calc(int digits){
     float m2 = std::pow(100,(digits-1)); // mass of block which hits smaller block mass
 
     float u1 = 0; // initial velocity of block on left
-    float u2 = -1; // initial velocity of block on right (moving to the left)
+    float u2 =-1; // initial velocity of block on right (moving to the left)
     float v1 = 0;
     float v2 = 0;
+	
+	float a1 = ((m1-m2)/sm);
+	float a2 = ((2*m2)/sm);
+	float b1 = ((2*m1)/sm);
+	float b2 = ((m2-m1)/sm);
+	
     int piCalculated = 0; // counts each collision
     float sm = (m1+m2);
     bool run = true;
@@ -20,9 +26,8 @@ float pi_calc(int digits){
             u1 = u1*-1;
         }
         else{ // otherwise, it changes momentum
-
-            v1 = ((m1-m2)/sm)*u1 + ((2*m2)/sm)*u2;
-            v2 = ((2*m1)/sm)*u1 + ((m2-m1)/sm)*u2;
+            v1 = a1*u1 + a2*u2;
+            v2 = b1*u1 + b2*u2;
             u1=v1;
             u2=v2;
 
