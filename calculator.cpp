@@ -12,11 +12,11 @@ float pi_calc(int digits){
     float v2 = 0;
     
     float sm = (m1+m2);
-	
-	float a1 = ((m1-m2)/sm);
-	float a2 = ((2*m2)/sm);
-	float b1 = ((2*m1)/sm);
-	float b2 = ((m2-m1)/sm);
+    // Calculating parts of the calculation beforehand (faster)
+    float a1 = ((m1-m2)/sm);
+    float a2 = ((2*m2)/sm);
+    float b1 = ((2*m1)/sm);
+    float b2 = ((m2-m1)/sm);
 	
     int piCalculated = 0; // counts each collision
     
