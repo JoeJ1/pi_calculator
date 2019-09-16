@@ -10,6 +10,8 @@ float pi_calc(int digits){
     float u2 =-1; // initial velocity of block on right (moving to the left)
     float v1 = 0;
     float v2 = 0;
+    
+    float sm = (m1+m2);
 	
 	float a1 = ((m1-m2)/sm);
 	float a2 = ((2*m2)/sm);
@@ -17,10 +19,10 @@ float pi_calc(int digits){
 	float b2 = ((m2-m1)/sm);
 	
     int piCalculated = 0; // counts each collision
-    float sm = (m1+m2);
+    
     bool run = true;
 
-    while(run){
+    do{
         piCalculated=piCalculated+1;
         if (u1<u2 and u1 < 0){ //If the magnitude of u1 is smaller than u2 and it is negative (so going to the right) then it hits the wall
             u1 = u1*-1;
@@ -32,14 +34,13 @@ float pi_calc(int digits){
             u2=v2;
 
         }
-        if(u1<u2 and u1>0){ // if velocity of u2 is greater (and positive), means it won't collide with u1 again so calculation should stop
-            run = false;
-        }
     }
+    while(u1>u2 or u1<0);
+	
     return piCalculated/pow(10,digits-1);
 }
 
 int main(){
- std::cout << std::to_string(pi_calc(6));
+ std::cout << std::to_string(pi_calc(4));
  return(0);
 }
