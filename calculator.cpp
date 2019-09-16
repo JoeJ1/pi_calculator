@@ -35,7 +35,7 @@ float pi_calc(int digits){
 
         }
     }
-    while(u1>u2 or u1<0);
+    while(u1>u2 || u1<0);
 	
     return piCalculated/pow(10,digits-1);
 }
